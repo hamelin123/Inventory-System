@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+ระบบจัดการคลังสินค้า
+🚀 ภาพรวมโครงการ
+ระบบจัดการคลังสินค้าแบบครบวงจร พัฒนาด้วย React และ Tailwind CSS
+📦 เทคโนโลยีที่ใช้
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Frontend: React 18.2.0
+การออกแบบ: Tailwind CSS 3.4.1
+การจัดการสถานะ: React Hooks
+การนำทาง: React Router DOM
+ไคลเอนต์ HTTP: Axios
+เครื่องมือสร้าง: React Scripts
 
-## Available Scripts
+📂 โครงสร้างโปรเจ็กต์ (รายละเอียด)
+1. ไดเรกทอรีหลัก
+Copyinventory-frontend/
+│
+├── public/                 # ไฟล์สถิต
+├── src/                    # โค้ดต้นฉบับ
+├── Dockerfile              # การทำคอนเทนเนอร์ Docker
+├── docker-compose.yml      # การตั้งค่า Docker หลายคอนเทนเนอร์
+├── nginx.conf              # การกำหนดค่าเว็บเซิร์ฟเวอร์ Nginx
+├── tailwind.config.js      # การกำหนดค่า Tailwind CSS
+├── postcss.config.js       # การกำหนดค่า PostCSS
+└── README.md               # เอกสารโครงการ
+2. โฟลเดอร์สาธารณะ
+Copypublic/
+├── index.html              # เทมเพลต HTML หลัก
+├── favicon.ico             # ไอคอนเว็บไซต์
+└── manifest.json           # การกำหนดค่าแอปพลิเคชันเว็บ
+3. โครงสร้างโฟลเดอร์ Src
+Copysrc/
+├── components/             # คอมโพเนนต์ React แบบใช้ซ้ำได้
+│   ├── common/             # คอมโพเนนต์ทั่วไป
+│   ├── auth/               # คอมโพเนนต์ตรวจสอบสิทธิ์
+│   ├── inventory/          # คอมโพเนนต์จัดการคลังสินค้า
+│   └── dashboard/          # คอมโพเนนต์แดชบอร์ด
+│
+├── pages/                  # คอมโพเนนต์เพจระดับบน
+│   ├── Home.js
+│   ├── Login.js
+│   ├── Dashboard.js
+│   └── Inventory.js
+│
+├── services/               # เลเยอร์บริการและ API
+│   ├── api.js              # API เรียกรวมศูนย์
+│   └── auth.js             # บริการตรวจสอบสิทธิ์
+│
+├── contexts/               # การจัดการบริบท React
+│   └── AuthContext.js      # สถานะการตรวจสอบสิทธิ์ทั่วโลก
+│
+├── utils/                  # ฟังก์ชันยูทิลิตี้
+│   ├── validation.js       # การตรวจสอบแบบฟอร์ม
+│   └── helpers.js          # ฟังก์ชันช่วยเหลือ
+│
+├── styles/                 # ไฟล์การตกแต่ง
+│   └── index.css           # สไตล์ทั่วโลก
+│
+├── App.js                  # คอมโพเนนต์แอปพลิเคชันหลัก
+└── index.js                # จุดเริ่มต้น
+🔧 ข้อกำหนดเบื้องต้น
 
-In the project directory, you can run:
+Node.js 18.x
+npm 9.x
+Docker (เลือกใช้)
 
-### `npm start`
+📦 การติดตั้ง Dependencies
+1. Dependencies หลัก
+bashCopynpm install react react-dom react-router-dom axios
+2. Dependencies สำหรับการพัฒนา
+bashCopy# Tailwind CSS
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# เครื่องมือเสริม
+npm install -D @testing-library/react @testing-library/jest-dom
+3. การติดตั้ง Package แบบเต็ม
+bashCopy# โคลนโครงการ
+git clone https://github.com/yourusername/inventory-frontend.git
+cd inventory-frontend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# ติดตั้ง Dependencies ทั้งหมด
+npm install
+🚀 การรันโปรเจ็กต์
+โหมดพัฒนา
+bashCopy# เริ่มเซิร์ฟเวอร์พัฒนา
+npm start
+สร้างเพื่อการใช้งานจริง
+bashCopy# สร้างสำหรับการใช้งานจริง
+npm run build
+การใช้ Docker
+bashCopy# สร้าง Docker image
+docker build -t inventory-frontend .
 
-### `npm test`
+# รัน Docker container
+docker run -d -p 3001:80 inventory-frontend
+🔑 คุณสมบัติหลัก
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+การตรวจสอบสิทธิ์ผู้ใช้
+การจัดการคลังสินค้า
+การติดตามสินค้า
+การวิเคราะห์แดชบอร์ด
+การออกแบบที่ตอบสนอง
 
-### `npm run build`
+🛡️ คุณสมบัติด้านความปลอดภัย
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+การตรวจสอบสิทธิ์ด้วย JWT
+เส้นทางที่ถูกป้องกัน
+การตรวจสอบความถูกต้องของข้อมูลนำเข้า
+การจัดการข้อผิดพลาด
